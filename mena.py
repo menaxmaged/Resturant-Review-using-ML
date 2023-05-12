@@ -51,10 +51,10 @@ def wordman(text):
 """MAIN APP """
 print("Welcome to our Restaurant Review App")
 print("Our App will predict if your review is possitive or negative")
-print("Starting traing Using Linear Regression ")
+print("Starting traing Using Support Vector Machine Regression ")
 
 """**Algorithm 1**"""
-# Train the linear regression model
+# Train the Support Vector Machine model
 from sklearn import svm
 sv = svm.SVC()
 sv.fit(X_train, y_train)
