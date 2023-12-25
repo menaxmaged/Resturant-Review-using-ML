@@ -7,7 +7,6 @@ This code is a simple restaurant review classification program using machine lea
 The following libraries are imported for data processing and analysis:
 
 - pandas: It is used for data manipulation and analysis.
-- nltk: Natural Language Toolkit used for Natural Language Processing.
 - sklearn.metrics: It is used for measuring the performance of the trained model.
 
 ## Data Loading

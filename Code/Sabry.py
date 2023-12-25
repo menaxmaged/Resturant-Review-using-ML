@@ -1,13 +1,9 @@
-# -*- coding: utf-8 -*-
-
 import pandas as pd
-import nltk
 from sklearn.metrics import accuracy_score
 
 # Loading Data Set
 df = pd.read_csv("Restaurant_Reviews.csv")
 
-df.head()
 
 df["Liked"]=df["Liked"].astype("category")
 
@@ -16,10 +12,9 @@ df["Liked"]=df["Liked"].astype("category")
 df[' Review']
 df.rename(columns = {' Review':'Review'}, inplace = True) #small fix APPLY ONCE
 
-df['fixed_reviews']=df['Review'] # applying the function to the dataset to get clean text
-df.head()
+df['Reviews']=df['Review'] # applying the function to the dataset to get clean text
 
-X = df["fixed_reviews"]
+X = df["Reviews"]
 y = df["Liked"]
 
 """**Machine Learning**"""
@@ -33,7 +28,7 @@ vectorizer = CountVectorizer()
 from sklearn.model_selection import train_test_split
 
 # Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=45)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=45)
 
 X_train = vectorizer.fit_transform(X_train)
 X_test = vectorizer.transform(X_test)
@@ -42,9 +37,9 @@ def wordman(text):
  # Manpultation of the Entered words
  #lemword=lemmatize_sentence(text)
  
- tfidfword = vectorizer.transform([text])
+ vec_word = vectorizer.transform([text])
  print("You Entered:"+ text)
- return tfidfword
+ return vec_word
 
 
 
@@ -67,6 +62,7 @@ LR_score = accuracy_score(y_test, predicted)
 print("Training Done with Accuracy: ",LR_score*100,"%")
 
 
+####APP UI #####
 
 text = input("Enter Your Review: ")
 rate = dtr.predict(wordman(text))
